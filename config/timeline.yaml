@@ -174,7 +174,7 @@ presets:
       # filter_method: "keyword"                # 筛选策略（可选: keyword | ai，不填用全局 filter.method）
       once:
         analyze: false             # 不限制分析次数
-        push: false                # 不限制推送次数
+        push: true                # 不限制推送次数
 
     # 时间段定义 ── 只有晚间汇总需要特殊处理
     periods:

@@ -53,6 +53,32 @@ def format_title_for_platform(
 
     # 获取关键词标签（platform 模式使用）
     keyword = title_data.get("matched_keyword", "") if show_keyword else ""
+    if platform == "feishu":
+        if link_url:
+            # 飞书 text 格式不支持 [title](url) 语法，只能写纯文本，用户自己复制链接
+            formatted_title = f"{cleaned_title} - {link_url}"
+        else:
+            formatted_title = cleaned_title
+
+        title_prefix = "🆕 " if title_data.get("is_new") else ""
+
+        # 核心修改：移除所有 <font> 标签，改用纯文本标记
+        if show_source:
+            result = f"[{title_data['source_name']}] {title_prefix}{formatted_title}"
+        elif show_keyword and keyword:
+            result = f"[{keyword}] {title_prefix}{formatted_title}"
+        else:
+            result = f"{title_prefix}{formatted_title}"
+
+        # 排名显示、时间、次数，全部改为纯文本，不要带 <font>
+        if rank_display:
+            result += f" {rank_display}"
+        if title_data["time_display"]:
+            result += f" - {title_data['time_display']}"
+        if title_data["count"] > 1:
+            result += f" ({title_data['count']}次)"
+
+        return result
 
     if platform == "feishu":
         if link_url:

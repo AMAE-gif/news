@@ -172,15 +172,10 @@ def send_to_feishu(
     if "www.feishu.cn" in webhook_url:
         # 强制修改这里，不要用 text，统一改用 interactive
         payload = {
-            "msg_type": "interactive",
-            "card": {
-                "schema": "2.0",
-                "body": {
-                    "elements": [
-                        {"tag": "markdown", "content": batch_content}
-                    ]
-                },
-            },
+            "msg_type": "text",
+            "content": {
+                "text": "这是一次纯文本测试，看看是否还会乱码。"
+            }
         }
         try:
             response = requests.post(

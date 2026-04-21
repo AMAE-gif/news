@@ -61,14 +61,10 @@ platforms:
       name: "百度热搜"
     - id: "wallstreetcn-hot"
       name: "华尔街见闻"
-    - id: "thepaper"
-      name: "澎湃新闻"
     - id: "bilibili-hot-search"
       name: "bilibili 热搜"
     - id: "cls-hot"
       name: "财联社热门"
-    - id: "ifeng"
-      name: "凤凰网"
     - id: "tieba"
       name: "贴吧"
     - id: "weibo"
@@ -278,7 +274,7 @@ display:
   #   - AI 分析：由 ai_analysis.include_standalone 开关控制，将完整数据送入 AI 做深度分析
   # 两者共享此处的平台/RSS 配置，但开关互相独立（可只开 AI 分析、不推送展示）
   standalone:
-    platforms: ["zhihu", "wallstreetcn-hot"]     # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
+    platforms: ["douyin"] # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
     rss_feeds: []                     # RSS 源 ID 列表（如 ["hacker-news"]）
     max_items: 20                     # 每个源最多展示条数（0=不限制）
 
@@ -417,7 +413,7 @@ ai:
   
   model: "deepseek/deepseek-chat"
 
-  api_key: ""                       # API Key（建议使用环境变量 AI_API_KEY）
+  api_key: "你是一位深度的科技与数学分析专家。 我关注的方向是：前沿数学定律、突破性人工智能算法、量子计算、底层代码逻辑、以及具有科学价值的技术进展。 请对筛选出的新闻进行深度解读，用专业的视角分析其技术价值，忽略任何商业推广、八卦炒作及低质量内容。"                       # API Key（建议使用环境变量 AI_API_KEY）
   
   api_base: ""                      # 自定义 API 端点（可选，大多数情况留空）
                                     # 示例: https://api.openai.com/v1（自建代理或兼容接口）
